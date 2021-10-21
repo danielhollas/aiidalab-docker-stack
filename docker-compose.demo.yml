@@ -1,0 +1,16 @@
+version: "3.8"
+services:
+  aiidalab:
+    image: aiidalab/aiidalab-docker-stack-demo:latest
+    ports:
+      - ${AIIDALAB_PORT:-8888}:8888
+    environment:
+      JUPYTER_TOKEN: ${JUPYTER_TOKEN:-}
+      AIIDALAB_DEFAULT_APPS: >
+        aiidalab-optimade
+        aiidalab-widgets-base
+        quantum-espresso
+    volumes:
+      - "${AIIDALAB_HOME_VOLUME:-aiidalab-home}:/home/aiida"
+volumes:
+  aiidalab-home:
